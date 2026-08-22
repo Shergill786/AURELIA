@@ -3,191 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aurelia — Premium Shopping, Redefined</title>
+<title>Loading Aurelia...</title>
+
+<meta http-equiv="refresh" content="2.4;url=login.html">
 <link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="css/responsive.css">
 </head>
-<body id="top" class="page-enter">
-
-
-<input type="checkbox" id="themeSwitch" class="state-input" aria-label="Toggle dark mode">
-<input type="checkbox" id="drawerToggle" class="state-input" aria-label="Toggle menu">
-
-<!-- Thin gold bar that fills as you scroll (browsers with scroll-timeline) -->
-<div id="scrollProgress"></div>
-
-<div class="announce-bar">✦ Free shipping on orders over ₹4,999 · New Season Arrivals Now Live ✦</div>
-
-<!-- ================================ NAVBAR ================================ -->
-<header class="navbar">
-  <div class="container nav-inner">
-    <a href="index.html" class="logo">AUR<span>ELIA</span></a>
-
-    <nav class="nav-links">
-      <a href="index.html" class="active">Home</a>
-      <a href="products.html">Shop</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="orders.html">Orders</a>
-    </nav>
-
-    <form class="nav-search" action="products.html" method="get">
-      <input type="text" name="q" placeholder="Search for products, brands...">
-      <span class="icon">⌕</span>
-    </form>
-
-    <div class="nav-icons">
-      <!-- A <label> is what makes a checkbox clickable, so this is a real
-           working dark-mode switch with zero JavaScript -->
-      <label for="themeSwitch" class="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
-        <span class="theme-icon sun" aria-hidden="true">☀</span>
-        <span class="theme-icon moon" aria-hidden="true">☾</span>
-        <span class="knob"></span>
-      </label>
-      <a href="wishlist.html" class="nav-icon" title="Wishlist">♡</a>
-      <a href="cart.html" class="nav-icon" title="Cart">🛍</a>
-      <a href="login.html" class="nav-icon" title="Account">☺</a>
-      <label for="drawerToggle" class="hamburger" title="Menu">☰</label>
-    </div>
+<body class="is-loading">
+  <div id="preloader" aria-live="polite" aria-label="Loading">
+    <div class="pre-mark">AURELIA</div>
+    <div class="pre-line"></div>
+    
+    <a class="pre-fallback" href="login.html"></a>
   </div>
-</header>
 
-<!-- Mobile slide-in menu. Tapping the dim overlay closes it because the
-     overlay is also a <label> pointing at the same checkbox. -->
-<label for="drawerToggle" class="drawer-overlay"></label>
-<div class="nav-drawer">
-  <label for="drawerToggle" class="nav-drawer-close">✕</label>
-  <a href="index.html">Home</a>
-  <a href="products.html">Shop</a>
-  <a href="about.html">About</a>
-  <a href="contact.html">Contact</a>
-  <a href="orders.html">Orders</a>
-  <a href="wishlist.html">Wishlist</a>
-  <a href="cart.html">Cart</a>
-  <a href="login.html">Login</a>
-</div>
-
-<!-- ================================= HERO =================================
-     The headline word and the three photos both cycle on CSS keyframes.
-     ====================================================================== -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="container hero-inner">
-    <div>
-      <span class="hero-eyebrow">Autumn / Winter Collection</span>
-      <h1>Style that speaks <br>
-        <span class="type-wrap">
-          <!-- invisible copy of the longest word: it gives the box its width
-               so the blinking cursor never jumps around -->
-          <span class="type-sizer" aria-hidden="true">for you.</span>
-          <span class="type-word">softly.</span>
-          <span class="type-word">boldly.</span>
-          <span class="type-word">for you.</span>
-        </span><span class="type-cursor">&nbsp;</span>
-      </h1>
-      <p>Discover a curated edit of jackets, coats and knitwear for men, women and kids — handpicked for people who notice the details.</p>
-
-      <div class="hero-actions">
-        <a href="products.html" class="btn btn-gold">Shop the Collection</a>
-        <a href="#categories" class="btn btn-outline">Explore Categories</a>
-      </div>
-
-      <div class="hero-stats">
-        <div><span class="num">120K+</span><span class="label">Happy Customers</span></div>
-        <div><span class="num">4.8/5</span><span class="label">Average Rating</span></div>
-        <div><span class="num">40+</span><span class="label">Global Brands</span></div>
-      </div>
+  <footer>
+    <div class="container">
+      <div class="footer-bottom"><span>© 2026 Aurelia. All rights reserved.</span><span>Premium apparel for every generation.</span></div>
     </div>
-
-    <!-- Auto-playing slider: each slide fades in for 5s of a 15s loop -->
-    <div class="hero-visual">
-      <div class="hero-slide"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800" alt="Fashion Editorial"><div class="cap">New Arrivals — Apparel Edit</div></div>
-      <div class="hero-slide"><img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=800" alt="Leather Jacket"><div class="cap">The Obsidian Leather Jacket</div></div>
-      <div class="hero-slide"><img src="https://images.unsplash.com/photo-1544923246-77307dd654cb?w=800" alt="Puffer Coat"><div class="cap">Cold-Weather Coats, Covered</div></div>
-      <div class="hero-dots">
-        <button type="button" aria-hidden="true"></button>
-        <button type="button" aria-hidden="true"></button>
-        <button type="button" aria-hidden="true"></button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ BRAND MARQUEE =============================
-     The list is written twice so the CSS scroll never shows a gap.
-     ====================================================================== -->
-<div class="marquee-wrap">
-  <div class="marquee-track">
-    <span>AURELIA</span><span>NORDSTEP</span><span>NOIR &amp; CO</span><span>MERIDIAN</span><span>LITTLE AURELIA</span><span>VASTRA LOOM</span><span>SPRINTFIT</span><span>URBAN THREAD</span>
-    <span>AURELIA</span><span>NORDSTEP</span><span>NOIR &amp; CO</span><span>MERIDIAN</span><span>LITTLE AURELIA</span><span>VASTRA LOOM</span><span>SPRINTFIT</span><span>URBAN THREAD</span>
-  </div>
-</div>
-
-<!-- ============================== CATEGORIES ============================== -->
-<section class="section" id="categories">
-  <div class="container">
-    <div class="section-head reveal">
-      <div>
-        <span class="eyebrow">Browse</span>
-        <h2 class="section-title">Top Categories:</h2>
-      </div>
-    </div>
-
-    <div class="cat-grid">
-      <a class="cat-card reveal" href="products.html?section=Men"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0OU_ocmwvmkzD49H4jlevxOxCY48h17eQJKt071-jxA&s=10" alt="Men"><div class="overlay">Men</div></a>
-      <a class="cat-card reveal" href="products.html?section=Women"><img src="https://cdn.pixabay.com/photo/2018/07/28/09/23/woman-3567600_640.jpg" alt="Women"><div class="overlay">Women</div></a>
-      <a class="cat-card reveal" href="products.html?section=Kids"><img src="https://images.unsplash.com/photo-1522771930-78848d9293e8?w=500" alt="Kids"><div class="overlay">Kids</div></a>
-    </div>
-
-    <div class="tag-row">
-      <a href="products.html?type=Ethnic%20Wear" class="tag-pill">Ethnic Wear</a>
-      <a href="products.html?type=Western%20Wear" class="tag-pill">Western Wear</a>
-      <a href="products.html?type=Casual%20Wear" class="tag-pill">Casual Wear</a>
-      <a href="products.html?type=Formal%20Wear" class="tag-pill">Formal Wear</a>
-      <a href="products.html?type=Activewear" class="tag-pill">Activewear</a>
-      <a href="products.html?type=Winter%20Wear" class="tag-pill">Winter Wear</a>
-    </div>
-  </div>
-</section>
-
-<div class="ribbon-divider"></div>
-
-<!-- ============================== NEWSLETTER ============================== -->
-<section class="section">
-  <div class="container">
-    <div class="newsletter-block reveal-zoom">
-      <h2>Join the Inner Circle</h2>
-      <p>Get early access to drops, private sales and style edits — straight to your inbox.</p>
-      <form action="#" method="get">
-        <input type="email" name="email" placeholder="Enter your email address" required>
-        <button type="submit">Subscribe</button>
-      </form>
-    </div>
-  </div>
-</section>
-
-<!-- ================================ FOOTER ================================ -->
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="logo">AUR<span>ELIA</span></a>
-        <p>A premium shopping destination for jackets, coats, and knitwear curated for the modern lifestyle.</p>
-        <div class="social-row">
-          <a href="#" title="Instagram">◎</a>
-          <a href="#" title="Twitter/X">✕</a>
-          <a href="#" title="Facebook">f</a>
-          <a href="#" title="Pinterest">P</a>
-        </div>
-      </div>
-
-      <div><h4>Shop</h4><ul><li><a href="products.html">All Clothing</a></li><li><a href="products.html?section=Men">Men</a></li><li><a href="products.html?section=Women">Women</a></li><li><a href="products.html?section=Kids">Kids</a></li></ul></div>
-      <div><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">Careers</a></li><li><a href="#">Press</a></li></ul></div>
-      <div><h4>Support</h4><ul><li><a href="orders.html">Track Order</a></li><li><a href="#">Shipping Info</a></li><li><a href="#">Returns</a></li><li><a href="#">FAQs</a></li></ul></div>
-
-     
-    </div>
-  </div>
-</footer>
+  </footer>
 
 </body>
 </html>

@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }
     const btn = loginForm.querySelector('button[type="submit"]');
     btn.textContent = 'Signing in...';
-    setTimeout(()=>{ window.location.href = 'index.html'; }, 900);
+    setTimeout(()=>{ window.location.href = 'home.html'; }, 900);
   });
 
   // Prefill remembered email

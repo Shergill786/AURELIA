@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 /* Highlight active nav link */
 document.addEventListener('DOMContentLoaded', ()=>{
-  const page = location.pathname.split('/').pop() || 'index.html';
+  const page = location.pathname.split('/').pop() || 'home.html';
   document.querySelectorAll('.nav-links a, .nav-drawer a').forEach(a=>{
     if(a.getAttribute('href') === page) a.classList.add('active');
   });

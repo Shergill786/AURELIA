@@ -15,9 +15,9 @@
 
 <header class="navbar">
   <div class="container nav-inner">
-    <a href="index.html" class="logo">AUR<span>ELIA</span></a>
+    <a href="home.html" class="logo">AUR<span>ELIA</span></a>
     <nav class="nav-links">
-      <a href="index.html">Home</a>
+      <a href="home.html">Home</a>
       <a href="products.html">Shop</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
@@ -29,7 +29,11 @@
       <div id="searchSuggestions"></div>
     </div>
     <div class="nav-icons">
-      <button class="theme-toggle" id="themeToggle"><span class="knob"></span></button>
+      <label for="themeSwitch" class="theme-toggle" id="themeToggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <span class="theme-icon sun" aria-hidden="true">☀</span>
+        <span class="theme-icon moon" aria-hidden="true">☾</span>
+        <span class="knob"></span>
+      </label>
       <a href="wishlist.html" class="nav-icon">♡<span class="badge wish-badge">0</span></a>
       <a href="cart.html" class="nav-icon active">🛍<span class="badge cart-badge">0</span></a>
       <a href="login.html" class="nav-icon">☺</a>
@@ -41,12 +45,12 @@
 <div class="drawer-overlay" id="drawerOverlay"></div>
 <div class="nav-drawer" id="navDrawer">
   <span class="nav-drawer-close">✕</span>
-  <a href="index.html">Home</a><a href="products.html">Shop</a><a href="about.html">About</a>
+  <a href="home.html">Home</a><a href="products.html">Shop</a><a href="about.html">About</a>
   <a href="contact.html">Contact</a><a href="orders.html">Orders</a><a href="wishlist.html">Wishlist</a>
   <a href="cart.html">Cart</a><a href="login.html">Login</a>
 </div>
 
-<div class="container"><div class="breadcrumb"><a href="index.html">Home</a> / <span>Your Cart</span></div></div>
+<div class="container"><div class="breadcrumb"><a href="home.html">Home</a> / <span>Your Cart</span></div></div>
 <div class="page-hero" style="padding-top:0;"><div class="container"><h1>Your Cart</h1></div></div>
 
 <section class="section" style="padding-top:20px;">
@@ -81,7 +85,7 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="logo" style="color:#fff;">AUR<span>ELIA</span></a>
+        <a href="home.html" class="logo" style="color:#fff;">AUR<span>ELIA</span></a>
         <p>A premium shopping destination for jackets, coats, and knitwear curated for the modern lifestyle.</p>
         <div class="social-row"><a href="#">◎</a><a href="#">✕</a><a href="#">f</a><a href="#">P</a></div>
       </div>
