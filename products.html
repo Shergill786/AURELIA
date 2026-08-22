@@ -75,10 +75,10 @@
     <!-- Filters -->
     <aside class="filter-panel" id="productFilters">
       <div class="filter-panel-head">
-        <h3>Filters</h3>
-        <span>Refine results</span>
+        <div><h3>Filters</h3><span>Refine results</span></div>
+        <button class="filter-close" id="filterClose" type="button">Close Filters</button>
       </div>
-      <div class="filter-group">
+      <div class="filter-group search-filter-group">
         <h4>Search</h4>
         <input type="text" id="pageSearchInput" placeholder="Search products..." style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);">
       </div>
@@ -119,7 +119,10 @@
         <label><input type="radio" name="rating" class="filter-rating" value="4"> 4.0 & up</label>
         <label><input type="radio" name="rating" class="filter-rating" value="3"> 3.0 & up</label>
       </div>
-      <button class="btn btn-outline btn-block btn-sm" id="clearFiltersBtn">Clear Filters</button>
+      <div class="filter-actions">
+        <button class="btn btn-outline btn-sm" id="clearFiltersBtn">Clear Filters</button>
+        <button class="filter-close filter-close-bottom" id="filterCloseBottom" type="button">Close Filters</button>
+      </div>
     </aside>
 
     <!-- Products -->

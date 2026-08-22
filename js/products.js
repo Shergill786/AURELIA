@@ -287,4 +287,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const isOpen = filterPanel?.classList.toggle('open') ?? false;
     filterToggle.setAttribute('aria-expanded', String(isOpen));
   });
+  const closeFilters = ()=>{
+    filterPanel?.classList.remove('open');
+    filterToggle?.setAttribute('aria-expanded', 'false');
+  };
+  document.querySelectorAll('.filter-close').forEach(button=> button.addEventListener('click', closeFilters));
 });

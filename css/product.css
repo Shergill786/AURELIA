@@ -7,12 +7,17 @@
 
 .filter-panel{
   background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-s);
-  padding:0 20px 20px; position:sticky; top:calc(var(--nav-h) + 20px); box-shadow:var(--shadow-soft);
+  padding:0 20px 20px; position:sticky; top:calc(var(--nav-h) + 20px); max-height:calc(100vh - var(--nav-h) - 40px);
+  overflow-y:auto; box-shadow:var(--shadow-soft);
 }
 .filter-panel-head{ padding:18px 0 14px; border-bottom:1px solid var(--border); margin-bottom:2px; }
+.filter-panel-head > div{ min-width:0; }
 .filter-panel-head h3{ font-size:1.1rem; margin-bottom:2px; }
 .filter-panel-head span{ color:var(--text-dim); font-size:.76rem; }
+.filter-close{ display:none; padding:8px 12px; border:1px solid var(--border); border-radius:var(--radius-s); color:var(--text-dim); font-size:.75rem; font-weight:600; white-space:nowrap; }
+.filter-close:hover{ color:var(--text); background:var(--bg-alt); }
 .filter-group{ margin:0; padding:18px 0; border-bottom:1px solid var(--border); }
+.search-filter-group{ padding-top:14px; }
 .filter-group h4{ font-size:.82rem; margin-bottom:12px; display:flex; justify-content:space-between; text-transform:uppercase; letter-spacing:.5px; }
 .filter-group label{ display:flex; align-items:center; gap:10px; font-size:.84rem; margin-bottom:9px; color:var(--text-dim); cursor:pointer; }
 .filter-group label:last-child{ margin-bottom:0; }
@@ -20,7 +25,10 @@
 .filter-group input[type="checkbox"], .filter-group input[type="radio"]{ accent-color:var(--gold-deep); width:17px; height:17px; margin:0; }
 .price-range{ width:100%; accent-color:var(--gold-deep); }
 .price-vals{ display:flex; justify-content:space-between; font-size:.8rem; color:var(--text-dim); margin-top:6px; }
-#clearFiltersBtn{ margin-top:18px; border-radius:var(--radius-s); }
+#clearFiltersBtn{ border-radius:var(--radius-s); }
+.filter-actions{ display:flex; align-items:stretch; gap:8px; margin-top:18px; }
+.filter-actions #clearFiltersBtn{ flex:1; }
+.filter-actions .filter-close-bottom{ display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; }
 
 .shop-toolbar{
   display:flex; justify-content:space-between; align-items:center; margin-bottom:26px; gap:16px; flex-wrap:wrap;

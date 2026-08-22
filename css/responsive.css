@@ -39,9 +39,10 @@
   }
   .mobile-filter-toggle[aria-expanded="true"] span:last-child{ transform:rotate(180deg); }
   .shop-layout, .shop-layout > *{ min-width:0; }
-  .filter-panel{ display:none; width:100%; }
+  .filter-panel{ display:none; width:100%; max-height:none; overflow:visible; }
   .filter-panel.open{ display:block; padding-left:16px; padding-right:16px; }
   .filter-panel-head{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+  .filter-close{ display:flex; align-items:center; justify-content:center; flex:0 0 auto; }
   .nav-links{ display:none; }
   .hamburger{ display:block; }
   .nav-search{ display:none; }
