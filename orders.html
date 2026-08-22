@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Orders — Aurelia</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/cart.css">
+<link rel="stylesheet" href="css/orders.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<div id="scrollProgress"></div>
+
+<header class="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">AUR<span>ELIA</span></a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="products.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="orders.html" class="active">Orders</a>
+    </nav>
+    <div class="nav-search">
+      <input type="text" id="navSearchInput" placeholder="Search for products, brands...">
+      <span class="icon">⌕</span>
+      <div id="searchSuggestions"></div>
+    </div>
+    <div class="nav-icons">
+      <button class="theme-toggle" id="themeToggle"><span class="knob"></span></button>
+      <a href="wishlist.html" class="nav-icon">♡<span class="badge wish-badge">0</span></a>
+      <a href="cart.html" class="nav-icon">🛍<span class="badge cart-badge">0</span></a>
+      <a href="login.html" class="nav-icon">☺</a>
+      <button class="hamburger">☰</button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<div class="nav-drawer" id="navDrawer">
+  <span class="nav-drawer-close">✕</span>
+  <a href="index.html">Home</a><a href="products.html">Shop</a><a href="about.html">About</a>
+  <a href="contact.html">Contact</a><a href="orders.html">Orders</a><a href="wishlist.html">Wishlist</a>
+  <a href="cart.html">Cart</a><a href="login.html">Login</a>
+</div>
+
+<div class="container"><div class="breadcrumb"><a href="index.html">Home</a> / <span>My Orders</span></div></div>
+<div class="page-hero" style="padding-top:0;"><div class="container"><h1>My Orders</h1></div></div>
+
+<section class="section" style="padding-top:20px;max-width:900px;margin:0 auto;">
+  <div class="container" id="ordersWrap"></div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" style="color:#fff;">AUR<span>ELIA</span></a>
+        <p>A premium shopping destination for jackets, coats, and knitwear curated for the modern lifestyle.</p>
+        <div class="social-row"><a href="#">◎</a><a href="#">✕</a><a href="#">f</a><a href="#">P</a></div>
+      </div>
+      <div><h4>Shop</h4><ul><li><a href="products.html">All Products</a></li><li><a href="products.html?section=Men">Men</a></li><li><a href="products.html?section=Women">Women</a></li><li><a href="products.html?section=Kids">Kids</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div><h4>Support</h4><ul><li><a href="orders.html">Track Order</a></li></ul></div>
+      <div><h4>Newsletter</h4>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); showToast('Subscribed successfully!'); this.reset();">
+          <input type="email" placeholder="Your email" required><button type="submit">Join</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Aurelia. All rights reserved.</span></div>
+  </div>
+</footer>
+
+<button id="scrollTop">↑</button>
+<div id="toastContainer"></div>
+
+<script src="js/products.js"></script>
+<script src="js/app.js"></script>
+<script src="js/search.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/orders.js"></script>
+</body>
+</html>

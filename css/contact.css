@@ -1,0 +1,75 @@
+/* Page-specific styles for contact.html */
+.contact-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-s, 10px);
+  padding: 22px 24px;
+  max-width: 720px;
+  margin: 0 auto 40px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+.contact-card .contact-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.contact-card h4 {
+  margin: 0 0 6px;
+}
+
+.contact-card a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.contact-card a:hover {
+  color: var(--gold, #b8860b);
+  text-decoration: underline;
+}
+
+.contact-card .divider {
+  width: 1px;
+  align-self: stretch;
+  background: var(--border);
+  margin: 0 4px;
+}
+
+.contact-card-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.contact-heading {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.faq-item {
+  text-align: center;
+}
+
+.faq-q {
+  position: relative;
+  text-align: center;
+  padding-right: 0;
+}
+
+.faq-q .chevron {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.faq-a {
+  text-align: center;
+}

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop All Products — Aurelia</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/product.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<div id="scrollProgress"></div>
+<div class="announce-bar">✦ Free shipping on orders over ₹4,999 · New Season Arrivals Now Live ✦</div>
+
+<header class="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">AUR<span>ELIA</span></a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="products.html" class="active">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="orders.html">Orders</a>
+    </nav>
+    <div class="nav-search">
+      <input type="text" id="navSearchInput" placeholder="Search for products, brands...">
+      <span class="icon">⌕</span>
+      <div id="searchSuggestions"></div>
+    </div>
+    <div class="nav-icons">
+      <button class="theme-toggle" id="themeToggle" title="Toggle dark mode"><span class="knob"></span></button>
+      <a href="wishlist.html" class="nav-icon" title="Wishlist">♡<span class="badge wish-badge">0</span></a>
+      <a href="cart.html" class="nav-icon" title="Cart">🛍<span class="badge cart-badge">0</span></a>
+      <a href="login.html" class="nav-icon" title="Account">☺</a>
+      <button class="hamburger">☰</button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<div class="nav-drawer" id="navDrawer">
+  <span class="nav-drawer-close">✕</span>
+  <a href="index.html">Home</a>
+  <a href="products.html">Shop</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="orders.html">Orders</a>
+  <a href="wishlist.html">Wishlist</a>
+  <a href="cart.html">Cart</a>
+  <a href="login.html">Login</a>
+</div>
+
+<div class="container">
+  <div class="breadcrumb"><a href="index.html">Home</a> / <span>Shop</span></div>
+</div>
+
+<div class="page-hero" style="padding-top:0;">
+  <div class="container">
+    <span class="eyebrow">Full Catalogue</span>
+    <h1>Shop All Products</h1>
+  </div>
+</div>
+
+<section class="section" style="padding-top:20px;">
+  <div class="container shop-layout">
+
+    <!-- Filters -->
+    <aside class="filter-panel">
+      <div class="filter-group">
+        <h4>Search</h4>
+        <input type="text" id="pageSearchInput" placeholder="Search products..." style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);">
+      </div>
+      <div class="filter-group">
+        <h4>Shop By</h4>
+        <label><input type="checkbox" class="filter-section" value="Men"> Men</label>
+        <label><input type="checkbox" class="filter-section" value="Women"> Women</label>
+        <label><input type="checkbox" class="filter-section" value="Kids"> Kids</label>
+      </div>
+      <div class="filter-group">
+        <h4>Type</h4>
+        <label><input type="checkbox" class="filter-type" value="Ethnic Wear"> Ethnic Wear</label>
+        <label><input type="checkbox" class="filter-type" value="Western Wear"> Western Wear</label>
+        <label><input type="checkbox" class="filter-type" value="Casual Wear"> Casual Wear</label>
+        <label><input type="checkbox" class="filter-type" value="Formal Wear"> Formal Wear</label>
+        <label><input type="checkbox" class="filter-type" value="Activewear"> Activewear</label>
+        <label><input type="checkbox" class="filter-type" value="Winter Wear"> Winter Wear</label>
+      </div>
+      <div class="filter-group">
+        <h4>Brand</h4>
+        <label><input type="checkbox" class="filter-brand" value="Aurelia"> Aurelia</label>
+        <label><input type="checkbox" class="filter-brand" value="Nordstep"> Nordstep</label>
+        <label><input type="checkbox" class="filter-brand" value="Noir & Co"> Noir & Co</label>
+        <label><input type="checkbox" class="filter-brand" value="Meridian"> Meridian</label>
+        <label><input type="checkbox" class="filter-brand" value="Little Aurelia"> Little Aurelia</label>
+        <label><input type="checkbox" class="filter-brand" value="Vastra Loom"> Vastra Loom</label>
+        <label><input type="checkbox" class="filter-brand" value="SprintFit"> SprintFit</label>
+        <label><input type="checkbox" class="filter-brand" value="Urban Thread"> Urban Thread</label>
+      </div>
+      <div class="filter-group">
+        <h4>Price Range</h4>
+        <input type="range" min="2000" max="10000" step="100" value="10000" id="priceRange" class="price-range">
+        <div class="price-vals"><span>₹2000</span><span id="priceMaxLabel">₹10000</span></div>
+      </div>
+      <div class="filter-group">
+        <h4>Rating</h4>
+        <label><input type="radio" name="rating" class="filter-rating" value="4.5"> 4.5 & up</label>
+        <label><input type="radio" name="rating" class="filter-rating" value="4"> 4.0 & up</label>
+        <label><input type="radio" name="rating" class="filter-rating" value="3"> 3.0 & up</label>
+      </div>
+      <button class="btn btn-outline btn-block btn-sm" id="clearFiltersBtn">Clear Filters</button>
+    </aside>
+
+    <!-- Products -->
+    <div>
+      <div class="shop-toolbar">
+        <span class="result-count" id="resultCount">16 products found</span>
+        <select class="sort-select" id="sortSelect">
+          <option value="featured">Sort by: Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="newest">Newest First</option>
+          <option value="rating">Top Rated</option>
+        </select>
+      </div>
+      <div class="product-grid" id="productsGrid"></div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" style="color:#fff;">AUR<span>ELIA</span></a>
+        <p>A premium shopping destination for jackets, coats, and knitwear curated for the modern lifestyle.</p>
+        <div class="social-row"><a href="#">◎</a><a href="#">✕</a><a href="#">f</a><a href="#">P</a></div>
+      </div>
+      <div><h4>Shop</h4><ul><li><a href="products.html">All Products</a></li><li><a href="products.html?section=Men">Men</a></li><li><a href="products.html?section=Women">Women</a></li><li><a href="products.html?section=Kids">Kids</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div><h4>Support</h4><ul><li><a href="orders.html">Track Order</a></li><li><a href="#">Returns</a></li></ul></div>
+      <div>
+        <h4>Newsletter</h4>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); showToast('Subscribed successfully!'); this.reset();">
+          <input type="email" placeholder="Your email" required><button type="submit">Join</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Aurelia. All rights reserved.</span><div class="payment-icons"><span>💳</span><span>🏦</span></div></div>
+  </div>
+</footer>
+
+<button id="scrollTop" title="Back to top">↑</button>
+<div id="toastContainer"></div>
+
+<div class="modal-overlay" id="quickViewOverlay">
+  <div class="modal-close" onclick="closeQuickView()">✕</div>
+  <div class="modal-box" id="qvContent"></div>
+</div>
+
+<script src="js/products.js"></script>
+<script src="js/app.js"></script>
+<script src="js/search.js"></script>
+<script src="js/slider.js"></script>
+</body>
+</html>

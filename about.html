@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — Aurelia</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/about.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<div id="scrollProgress"></div>
+
+<header class="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">AUR<span>ELIA</span></a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="products.html">Shop</a>
+      <a href="about.html" class="active">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="orders.html">Orders</a>
+    </nav>
+    <div class="nav-search">
+      <input type="text" id="navSearchInput" placeholder="Search for products, brands...">
+      <span class="icon">⌕</span>
+      <div id="searchSuggestions"></div>
+    </div>
+    <div class="nav-icons">
+      <button class="theme-toggle" id="themeToggle"><span class="knob"></span></button>
+      <a href="wishlist.html" class="nav-icon">♡<span class="badge wish-badge">0</span></a>
+      <a href="cart.html" class="nav-icon">🛍<span class="badge cart-badge">0</span></a>
+      <a href="login.html" class="nav-icon">☺</a>
+      <button class="hamburger">☰</button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<div class="nav-drawer" id="navDrawer">
+  <span class="nav-drawer-close">✕</span>
+  <a href="index.html">Home</a><a href="products.html">Shop</a><a href="about.html">About</a>
+  <a href="contact.html">Contact</a><a href="orders.html">Orders</a><a href="wishlist.html">Wishlist</a>
+  <a href="cart.html">Cart</a><a href="login.html">Login</a>
+</div>
+
+<div class="container"><div class="breadcrumb"><a href="index.html">Home</a> / <span>About Us</span></div></div>
+<div class="page-hero" style="padding-top:0;">
+  <div class="container">
+    <span class="eyebrow">Our Story</span>
+    <h1>Crafted for Every Wardrobe</h1>
+    <p style="color:var(--text-dim);max-width:620px;margin:16px auto 0;">Aurelia began with a simple idea — that quality clothing for men, women and kids shouldn't mean compromising on craft, comfort, or conscience.</p>
+  </div>
+</div>
+
+<!-- Story -->
+<section class="section">
+  <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;">
+    <div class="reveal">
+      <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800" alt="Aurelia studio" style="width:100%;border-radius:var(--radius-l);box-shadow:var(--shadow-hard);">
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Since 2018</span>
+      <h2 class="section-title">A House Built on Fabric &amp; Detail</h2>
+      <p style="color:var(--text-dim);margin-bottom:18px;line-height:1.8;">What started as a small atelier making made-to-order jackets has grown into a full wardrobe destination — spanning tailored menswear, fluid womenswear, and playground-ready kidswear, all held to the same standard.</p>
+      <p style="color:var(--text-dim);line-height:1.8;">Every Aurelia piece passes through the hands of people who genuinely care about stitching, drape, and how a garment feels after the fiftieth wash — not just the first.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Values -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><span class="eyebrow">What We Stand For</span><h2 class="section-title">Our Values</h2></div>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal"><div class="why-icon">✂️</div><h4>Considered Craft</h4><p style="color:var(--text-dim);font-size:.9rem;margin-top:8px;">Every pattern is cut for how people actually move, not just how they photograph.</p></div>
+      <div class="why-card reveal"><div class="why-icon">🌿</div><h4>Responsible Sourcing</h4><p style="color:var(--text-dim);font-size:.9rem;margin-top:8px;">Natural fibres, low-impact dyes, and partner mills we've visited ourselves.</p></div>
+      <div class="why-card reveal"><div class="why-icon">👨‍👩‍👧</div><h4>For the Whole Family</h4><p style="color:var(--text-dim);font-size:.9rem;margin-top:8px;">Men's, women's and kids' collections designed to sit well together.</p></div>
+      <div class="why-card reveal"><div class="why-icon">↩</div><h4>Stand-Behind Quality</h4><p style="color:var(--text-dim);font-size:.9rem;margin-top:8px;">30-day returns and a 1-year warranty because we trust what we make.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="section" style="padding-top:0;">
+  <div class="container stats-strip">
+    <div class="reveal"><div class="stat-counter" data-count="120000" data-suffix="+">0</div><p style="color:var(--text-dim)">Customers</p></div>
+    <div class="reveal"><div class="stat-counter" data-count="4800" data-suffix="+">0</div><p style="color:var(--text-dim)">Garments Shipped Daily</p></div>
+    <div class="reveal"><div class="stat-counter" data-count="5" data-suffix="">0</div><p style="color:var(--text-dim)">In-House Brands</p></div>
+    <div class="reveal"><div class="stat-counter" data-count="98" data-suffix="%">0</div><p style="color:var(--text-dim)">Satisfaction Rate</p></div>
+  </div>
+</section>
+
+<div class="ribbon-divider"></div>
+
+<!-- Team -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><span class="eyebrow">The People Behind Aurelia</span><h2 class="section-title">Meet the Team</h2></div>
+    </div>
+    <div class="review-grid">
+      <div class="review-card reveal">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200" alt="Founder" style="width:64px;height:64px;border-radius:50%;object-fit:cover;margin-bottom:16px;">
+        <strong style="display:block;margin-bottom:2px;">Daniel Cole</strong>
+        <span style="font-size:.8rem;color:var(--text-dim);">Founder &amp; Creative Director</span>
+        <p class="review-quote" style="margin-top:14px;">"We design for the wardrobe you'll actually reach for — season after season."</p>
+      </div>
+      <div class="review-card reveal">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200" alt="Head of Design" style="width:64px;height:64px;border-radius:50%;object-fit:cover;margin-bottom:16px;">
+        <strong style="display:block;margin-bottom:2px;">Amelia Rhodes</strong>
+        <span style="font-size:.8rem;color:var(--text-dim);">Head of Womenswear</span>
+        <p class="review-quote" style="margin-top:14px;">"Fabric first, trend second. That's how pieces earn a permanent place in your closet."</p>
+      </div>
+      <div class="review-card reveal">
+        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200" alt="Head of Kidswear" style="width:64px;height:64px;border-radius:50%;object-fit:cover;margin-bottom:16px;">
+        <strong style="display:block;margin-bottom:2px;">Priya Shah</strong>
+        <span style="font-size:.8rem;color:var(--text-dim);">Head of Kidswear</span>
+        <p class="review-quote" style="margin-top:14px;">"Kids don't care about trends — they care if it survives recess. So do we."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section section-alt">
+  <div class="container" style="text-align:center;">
+    <span class="eyebrow">Ready When You Are</span>
+    <h2 class="section-title">Explore the Full Collection</h2>
+    <p class="section-sub" style="margin-left:auto;margin-right:auto;">Men's, women's and kids' clothing, all in one place.</p>
+    <a href="products.html" class="btn btn-gold ripple">Shop Now</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" style="color:#fff;">AUR<span>ELIA</span></a>
+        <p>A premium shopping destination for jackets, coats, and knitwear curated for the modern lifestyle.</p>
+        <div class="social-row"><a href="#">◎</a><a href="#">✕</a><a href="#">f</a><a href="#">P</a></div>
+      </div>
+      <div><h4>Shop</h4><ul><li><a href="products.html">All Products</a></li><li><a href="products.html?section=Men">Men</a></li><li><a href="products.html?section=Women">Women</a></li><li><a href="products.html?section=Kids">Kids</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div><h4>Support</h4><ul><li><a href="orders.html">Track Order</a></li></ul></div>
+      <div><h4>Newsletter</h4>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); showToast('Subscribed successfully!'); this.reset();">
+          <input type="email" placeholder="Your email" required><button type="submit">Join</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Aurelia. All rights reserved.</span></div>
+  </div>
+</footer>
+
+<button id="scrollTop">↑</button>
+<div id="toastContainer"></div>
+
+<script src="js/products.js"></script>
+<script src="js/app.js"></script>
+<script src="js/search.js"></script>
+<script src="js/about.js"></script>
+</body>
+</html>

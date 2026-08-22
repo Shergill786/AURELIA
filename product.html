@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">Product Details — Aurelia</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/product.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<div id="scrollProgress"></div>
+
+<header class="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">AUR<span>ELIA</span></a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="products.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="orders.html">Orders</a>
+    </nav>
+    <div class="nav-search">
+      <input type="text" id="navSearchInput" placeholder="Search for products, brands...">
+      <span class="icon">⌕</span>
+      <div id="searchSuggestions"></div>
+    </div>
+    <div class="nav-icons">
+      <button class="theme-toggle" id="themeToggle" title="Toggle dark mode"><span class="knob"></span></button>
+      <a href="wishlist.html" class="nav-icon">♡<span class="badge wish-badge">0</span></a>
+      <a href="cart.html" class="nav-icon">🛍<span class="badge cart-badge">0</span></a>
+      <a href="login.html" class="nav-icon">☺</a>
+      <button class="hamburger">☰</button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<div class="nav-drawer" id="navDrawer">
+  <span class="nav-drawer-close">✕</span>
+  <a href="index.html">Home</a><a href="products.html">Shop</a><a href="about.html">About</a>
+  <a href="contact.html">Contact</a><a href="orders.html">Orders</a><a href="wishlist.html">Wishlist</a>
+  <a href="cart.html">Cart</a><a href="login.html">Login</a>
+</div>
+
+<div class="container">
+  <div class="breadcrumb"><a href="index.html">Home</a> / <a href="products.html">Shop</a> / <span id="crumbName">Product</span></div>
+</div>
+
+<section class="container" id="pdContainer">
+  <div class="pd-layout">
+    <div>
+      <div class="pd-gallery-main"><img id="pdMainImage" src="" alt=""></div>
+      <div class="pd-thumbs" id="pdThumbs"></div>
+    </div>
+    <div>
+      <span class="pd-cat" id="pdCat"></span>
+      <h1 class="pd-title" id="pdTitle"></h1>
+      <div class="pd-rating" id="pdRating"></div>
+      <div class="pd-price-row">
+        <span class="now" id="pdPrice"></span>
+        <span class="old" id="pdOldPrice"></span>
+        <span class="off" id="pdOff"></span>
+      </div>
+      <p class="pd-desc" id="pdDesc"></p>
+
+      <div class="option-row">
+        <h5>Color</h5>
+        <div class="swatches" id="pdSwatches"></div>
+      </div>
+      <div class="option-row">
+        <h5>Size</h5>
+        <div class="size-pills" id="pdSizes"></div>
+      </div>
+      <div class="option-row">
+        <h5>Quantity</h5>
+        <div class="qty-selector">
+          <button id="qtyMinus">−</button>
+          <input type="text" id="pdQty" value="1" readonly>
+          <button id="qtyPlus">+</button>
+        </div>
+      </div>
+
+      <div class="pd-actions">
+        <button class="btn btn-primary ripple" id="pdAddCart">Add to Cart</button>
+        <button class="btn btn-gold ripple" id="pdBuyNow">Buy Now</button>
+        <button class="btn btn-ghost" id="pdWishBtn">♡ Wishlist</button>
+      </div>
+
+      <div class="pd-meta-list">
+        <span>🚚 Free delivery in 3–5 business days on orders over ₹4,999.</span>
+        <span>↩ 30-day hassle-free returns.</span>
+        <span>🔒 Secure payment — all major cards accepted.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="pd-tabs">
+    <button class="pd-tab active" data-tab="tabDesc">Description</button>
+    <button class="pd-tab" data-tab="tabSpecs">Specifications</button>
+    <button class="pd-tab" data-tab="tabReviews">Reviews</button>
+    <button class="pd-tab" data-tab="tabFaq">FAQ</button>
+  </div>
+
+  <div class="pd-tab-panel active" id="tabDesc">
+    <p id="tabDescText" style="color:var(--text-dim);max-width:760px;line-height:1.8;"></p>
+  </div>
+  <div class="pd-tab-panel" id="tabSpecs">
+    <table class="spec-table">
+      <tr><td>Brand</td><td id="specBrand"></td></tr>
+      <tr><td>Section</td><td id="specSection"></td></tr>
+      <tr><td>Style</td><td id="specType"></td></tr>
+      <tr><td>Category</td><td id="specCat"></td></tr>
+      <tr><td>Material</td><td>Premium sourced materials, cruelty-free</td></tr>
+      <tr><td>Warranty</td><td>1-year limited manufacturer warranty</td></tr>
+      <tr><td>Country of Origin</td><td>Imported, finished in-house</td></tr>
+    </table>
+  </div>
+  <div class="pd-tab-panel" id="tabReviews">
+    <div class="review-grid" style="grid-template-columns:repeat(2,1fr);">
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-quote">"Exceeded expectations — the finish is fantastic for the price."</p><div class="review-user"><img src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?w=100" alt="Reviewer"><div><strong>Rhea M.</strong><span>Verified Buyer</span></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★☆</div><p class="review-quote">"Great product overall, sizing ran slightly small so consider going up."</p><div class="review-user"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100" alt="Reviewer"><div><strong>Karan V.</strong><span>Verified Buyer</span></div></div></div>
+    </div>
+  </div>
+  <div class="pd-tab-panel" id="tabFaq">
+    <div class="faq-item"><div class="faq-q">What is your return policy? <span class="chevron">⌄</span></div><div class="faq-a">You can return any item within 30 days of delivery for a full refund, provided it's unused and in original packaging.</div></div>
+    <div class="faq-item"><div class="faq-q">How long does delivery take? <span class="chevron">⌄</span></div><div class="faq-a">Standard delivery takes 3–5 business days. Express options are available at checkout.</div></div>
+    <div class="faq-item"><div class="faq-q">Is this item covered by warranty? <span class="chevron">⌄</span></div><div class="faq-a">Yes, all Aurelia products include a 1-year limited manufacturer warranty against defects.</div></div>
+  </div>
+
+  <div class="section-head reveal" style="margin-top:70px;">
+    <div><span class="eyebrow">You Might Also Like</span><h2 class="section-title">Related Products</h2></div>
+  </div>
+  <div class="product-grid" id="relatedGrid" style="margin-bottom:80px;"></div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" style="color:#fff;">AUR<span>ELIA</span></a>
+        <p>A premium shopping destination for jackets, coats, and knitwear curated for the modern lifestyle.</p>
+        <div class="social-row"><a href="#">◎</a><a href="#">✕</a><a href="#">f</a><a href="#">P</a></div>
+      </div>
+      <div><h4>Shop</h4><ul><li><a href="products.html">All Products</a></li><li><a href="products.html?section=Men">Men</a></li><li><a href="products.html?section=Women">Women</a></li><li><a href="products.html?section=Kids">Kids</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div><h4>Support</h4><ul><li><a href="orders.html">Track Order</a></li></ul></div>
+      <div><h4>Newsletter</h4>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); showToast('Subscribed successfully!'); this.reset();">
+          <input type="email" placeholder="Your email" required><button type="submit">Join</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Aurelia. All rights reserved.</span></div>
+  </div>
+</footer>
+
+<button id="scrollTop">↑</button>
+<div id="toastContainer"></div>
+<div class="modal-overlay" id="quickViewOverlay"><div class="modal-close" onclick="closeQuickView()">✕</div><div class="modal-box" id="qvContent"></div></div>
+
+<script src="js/products.js"></script>
+<script src="js/app.js"></script>
+<script src="js/search.js"></script>
+<script src="js/slider.js"></script>
+<script src="js/product.js"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout — Aurelia</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/cart.css">
+<link rel="stylesheet" href="css/checkout.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<div id="scrollProgress"></div>
+
+<header class="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">AUR<span>ELIA</span></a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="products.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="orders.html">Orders</a>
+    </nav>
+    <div class="nav-search">
+      <input type="text" id="navSearchInput" placeholder="Search for products, brands...">
+      <span class="icon">⌕</span>
+      <div id="searchSuggestions"></div>
+    </div>
+    <div class="nav-icons">
+      <button class="theme-toggle" id="themeToggle"><span class="knob"></span></button>
+      <a href="wishlist.html" class="nav-icon">♡<span class="badge wish-badge">0</span></a>
+      <a href="cart.html" class="nav-icon">🛍<span class="badge cart-badge">0</span></a>
+      <a href="login.html" class="nav-icon">☺</a>
+      <button class="hamburger">☰</button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<div class="nav-drawer" id="navDrawer">
+  <span class="nav-drawer-close">✕</span>
+  <a href="index.html">Home</a><a href="products.html">Shop</a><a href="about.html">About</a>
+  <a href="contact.html">Contact</a><a href="orders.html">Orders</a><a href="wishlist.html">Wishlist</a>
+  <a href="cart.html">Cart</a><a href="login.html">Login</a>
+</div>
+
+<div class="container"><div class="breadcrumb"><a href="index.html">Home</a> / <a href="cart.html">Cart</a> / <span>Checkout</span></div></div>
+<div class="page-hero" style="padding-top:0;"><div class="container"><h1>Checkout</h1></div></div>
+
+<section class="section" style="padding-top:20px;">
+  <div class="container checkout-layout">
+
+    <div>
+      <h3 style="font-family:var(--font-display);font-size:1.3rem;margin-bottom:20px;">Shipping Details</h3>
+      <form id="checkoutForm" novalidate>
+        <div class="form-grid">
+          <div class="field full">
+            <label>Full Name</label>
+            <input type="text" id="fullName" placeholder="Jane Doe">
+            <span class="error-msg">Please enter your full name</span>
+          </div>
+          <div class="field full">
+            <label>Email Address</label>
+            <input type="email" id="email" placeholder="you@example.com">
+          </div>
+          <div class="field full">
+            <label>Street Address</label>
+            <input type="text" id="address" placeholder="221B, Baker Street">
+            <span class="error-msg">Please enter your delivery address</span>
+          </div>
+          <div class="field">
+            <label>City</label>
+            <input type="text" id="city" placeholder="Mumbai">
+            <span class="error-msg">Please enter your city</span>
+          </div>
+          <div class="field">
+            <label>ZIP / Postal Code</label>
+            <input type="text" id="zip" placeholder="400001">
+            <span class="error-msg">Please enter a valid postal code</span>
+          </div>
+          <div class="field">
+            <label>Phone Number</label>
+            <input type="tel" id="phone" placeholder="+91 98765 43210">
+            <span class="error-msg">Please enter a valid phone number</span>
+          </div>
+          <div class="field">
+            <label>Country</label>
+            <select id="country">
+              <option>India</option>
+              <option>United States</option>
+              <option>United Kingdom</option>
+              <option>Canada</option>
+              <option>Australia</option>
+            </select>
+          </div>
+        </div>
+
+        <h3 style="font-family:var(--font-display);font-size:1.3rem;margin:34px 0 18px;">Payment Method</h3>
+        <div class="pay-methods" id="payMethods">
+          <label class="pay-method active"><input type="radio" name="pay" checked> 💳 Credit / Debit Card</label>
+          <label class="pay-method">Ⓟ <input type="radio" name="pay" style="margin-left:6px;"> UPI</label>
+          <label class="pay-method">🏦 <input type="radio" name="pay" style="margin-left:6px;"> Net Banking</label>
+          <label class="pay-method">💵 <input type="radio" name="pay" style="margin-left:6px;"> Cash on Delivery</label>
+        </div>
+
+        <button type="submit" class="btn btn-gold btn-block ripple" style="margin-top:26px;">Place Order</button>
+      </form>
+    </div>
+
+    <div class="summary-box">
+      <h3 style="font-family:var(--font-display);font-size:1.3rem;margin-bottom:20px;">Order Summary</h3>
+      <div id="checkoutSummary"></div>
+    </div>
+
+  </div>
+</section>
+
+<div class="success-modal" id="successModal">
+  <div class="success-box">
+    <div class="success-check">✓</div>
+    <h2 style="font-family:var(--font-display);">Order Placed!</h2>
+    <p style="color:var(--text-dim);margin:14px 0 28px;">Thank you for shopping with Aurelia. A confirmation has been sent to your email.</p>
+    <button class="btn btn-gold ripple" onclick="closeSuccessModal()">View My Orders</button>
+  </div>
+</div>
+
+<div id="toastContainer"></div>
+
+<script src="js/products.js"></script>
+<script src="js/app.js"></script>
+<script src="js/search.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/checkout.js"></script>
+</body>
+</html>

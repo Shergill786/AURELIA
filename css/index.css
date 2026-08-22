@@ -1,0 +1,1538 @@
+
+
+/* ==========================================================================
+   1. FONTS
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+
+/* ==========================================================================
+   2. DESIGN TOKENS
+   Every colour, font and size used on the site is defined once here.
+   Change a value in this block and it updates everywhere.
+   ========================================================================== */
+
+:root {
+
+  /* ---- Colours ---- */
+  --black:       #0b0b0d;
+  --black-soft:  #131316;
+  --white:       #fafaf8;
+  --white-dim:   #e9e7e1;
+
+  --gold:        #d4af6a;
+  --gold-bright: #f3d999;
+  --gold-deep:   #9c7a3c;
+
+  --blue:        #4c6fff;
+  --purple:      #7b4fe0;
+
+  /* ---- Gradients ---- */
+  --grad-signature: linear-gradient(115deg, var(--blue) 0%, var(--purple) 45%, var(--gold) 100%);
+  --grad-gold:      linear-gradient(120deg, var(--gold-deep), var(--gold-bright), var(--gold-deep));
+
+  /* ---- Surfaces (light mode is the default) ---- */
+  --bg:            var(--white);
+  --bg-alt:        #f2f0ea;
+  --surface:       #ffffff;
+  --surface-glass: rgba(255, 255, 255, 0.55);
+  --text:          var(--black);
+  --border:        rgba(11, 11, 13, 0.1);
+
+  /* ---- Type ---- */
+  --font-display: 'Playfair Display', serif;
+  --font-body:    'Inter', sans-serif;
+
+  /* ---- Layout ---- */
+  --radius-s:  8px;
+  --radius-m:  16px;
+  --radius-l:  28px;
+  --nav-h:     76px;
+  --container: 1280px;
+
+  /* ---- Shadows ---- */
+  --shadow-soft: 0 10px 30px rgba(11, 11, 13, 0.08);
+  --shadow-hard: 0 20px 50px rgba(11, 11, 13, 0.16);
+}
+
+
+/* ==========================================================================
+   3. DARK THEME TOKENS
+   Only the values that actually change are re-declared here.
+   ========================================================================== */
+
+[data-theme="dark"] {
+  --bg:            var(--black);
+  --bg-alt:        var(--black-soft);
+  --surface:       #17171b;
+  --surface-glass: rgba(255, 255, 255, 0.06);
+  --text:          var(--white);
+  --text-dim:      #a9a6a0;
+  --border:        rgba(255, 255, 255, 0.12);
+
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.4);
+  --shadow-hard: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+
+/* ==========================================================================
+   4. RESET & BASE ELEMENTS
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background .4s ease, color .4s ease;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+
+  color: inherit;
+}
+
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--black);
+}
+
+
+/* ---- Scrollbar ---- */
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-alt);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--grad-gold);
+  border-radius: 10px;
+}
+
+
+/* ==========================================================================
+   5. LAYOUT HELPERS
+   ========================================================================== */
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ==========================================================================
+   7. PRELOADER
+   Full-screen cover shown while the page loads.
+   ========================================================================== */
+
+/* loading.html only. Paints the page canvas black from the very first frame,
+   so nothing white can show through before/around the loader. */
+body.is-loading {
+  background: var(--black);
+  color: var(--white);
+}
+
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--black);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.pre-mark {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  color: var(--gold-bright);
+  letter-spacing: 6px;
+}
+
+.pre-line {
+  width: 120px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* The gold bar that sweeps across .pre-line */
+.pre-line::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  background: var(--grad-gold);
+  animation: loadbar 2s ease-in-out infinite;
+}
+
+@keyframes loadbar {
+  0%   { left: -40%; }
+  100% { left: 100%; }
+}
+
+/* ==========================================================================
+   8. ANNOUNCEMENT BAR
+   ========================================================================== */
+
+.announce-bar {
+  background: var(--black);
+  color: var(--gold-bright);
+  text-align: center;
+  font-size: .78rem;
+  font-weight: bolder;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 9px 0;
+}
+
+
+/* ==========================================================================
+   9. NAVBAR
+   ========================================================================== */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: var(--nav-h);
+
+  display: flex;
+  align-items: center;
+
+  background: var(--surface-glass);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border-bottom: 1px solid var(--border);
+
+  transition: box-shadow .3s ease;
+}
+
+.nav-inner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+
+/* ---- Logo ---- */
+
+.logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Gradient text effect on the highlighted part of the logo */
+.logo span {
+  background: var(--grad-signature);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+
+/* ---- Nav links ---- */
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  font-weight: 500;
+  font-size: .94rem;
+}
+
+.nav-links a {
+  position: relative;
+  padding: 6px 0;
+}
+
+/* Gold underline that grows on hover */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--grad-gold);
+  transition: width .3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+
+/* ---- Search box ---- */
+
+.nav-search {
+  flex: 1;
+  max-width: 340px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nav-search input {
+  width: 100%;
+  padding: 10px 40px 10px 16px;
+  border: 1px solid var(--border);
+  border-radius: 30%;
+  background: var(--surface);
+  color: var(--text);
+  font-size: .88rem;
+  transition: border-color .25s;
+}
+
+.nav-search input:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+.nav-search .icon {
+  position: absolute;
+  right: 14px;
+  font-size: 1rem;
+  opacity: .6;
+  pointer-events: none;
+}
+
+
+/* ---- Nav icons & theme toggle ---- */
+
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 25px;
+}
+
+.nav-icon {
+  position: relative;
+}
+
+.theme-toggle {
+  width: 58px;
+  height: 30px;
+  padding: 2px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-alt);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 8px;
+}
+
+.theme-toggle .theme-icon {
+  font-size: .85rem;
+  line-height: 1;
+  transition: opacity .25s ease, transform .25s ease;
+}
+
+.theme-toggle .sun {
+  color: var(--gold-deep);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.theme-toggle .moon {
+  color: var(--text);
+  opacity: .35;
+  transform: translateY(1px);
+}
+
+.theme-toggle .knob {
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--grad-gold);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, .2);
+  transition: transform .3s ease;
+}
+
+[data-theme="dark"] .theme-toggle .knob {
+  transform: translateX(28px);
+}
+
+[data-theme="dark"] .theme-toggle .sun {
+  opacity: .35;
+}
+
+[data-theme="dark"] .theme-toggle .moon {
+  opacity: 1;
+}
+
+/* Hidden on desktop, shown at the mobile breakpoint */
+.hamburger {
+  display: none;
+  font-size: 1.4rem;
+}
+
+
+/* ==========================================================================
+   10. BUTTONS
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 14px 30px;
+  border-radius: 999px;
+
+  font-weight: 600;
+  font-size: .9rem;
+  letter-spacing: .3px;
+
+  position: relative;
+  overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.btn:active {
+  transform: scale(.96);
+}
+
+.btn-gold {
+  background: var(--grad-gold);
+  color: var(--black);
+}
+
+.btn-gold:hover {
+  box-shadow: 0 12px 26px rgba(212, 175, 106, .4);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  border: 1.5px solid var(--text);
+}
+
+.btn-outline:hover {
+  background: var(--text);
+  color: var(--bg);
+}
+
+@keyframes rippleAnim {
+  to {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+
+/* ==========================================================================
+   11. SECTION BASICS & DIVIDERS
+   ========================================================================== */
+
+.section {
+  padding: 100px 0;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 10px;
+  font-size: .95rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+}
+
+[data-theme="dark"] .eyebrow {
+  color: var(--gold-bright);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.4vw, 2.7rem);
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+
+/* ---- Gold ribbon divider (signature element) ----
+   A hairline rule with a tilted gold bar and a small star centred on it. */
+
+.ribbon-divider {
+  position: relative;
+  height: 2px;
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto 60px;
+  background: var(--border);
+  overflow: visible;
+}
+
+/* The tilted gold bar */
+.ribbon-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-7deg);
+
+  width: 130px;
+  height: 5px;
+  border-radius: 4px;
+  background: var(--grad-gold);
+  box-shadow: var(--shadow-soft);
+}
+
+
+/* ==========================================================================
+   12. REVEAL ANIMATIONS
+   Elements start hidden and get the .in class when scrolled into view.
+   ========================================================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-zoom {
+  opacity: 0;
+  transform: scale(.9);
+  transition: opacity .6s ease, transform .6s ease;
+}
+
+.reveal-zoom.in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes toastOut {
+  to {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+}
+
+
+/* ==========================================================================
+   14. FOOTER
+   ========================================================================== */
+
+footer {
+  background: var(--black);
+  color: var(--white-dim);
+  padding: 80px 0 0;
+  margin-top: 120px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr 1.3fr;
+  gap: 40px;
+  padding-bottom: 50px;
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+}
+
+.footer-grid h4 {
+  color: #fff;
+  margin-bottom: 18px;
+  font-size: .95rem;
+  letter-spacing: .5px;
+}
+
+.footer-grid ul li {
+  margin-bottom: 10px;
+}
+
+.footer-grid ul li a {
+  color: var(--white-dim);
+  font-size: .88rem;
+  transition: color .2s;
+}
+
+.footer-grid ul li a:hover {
+  color: var(--gold-bright);
+}
+
+.footer-brand p {
+  max-width: 280px;
+  margin: 14px 0 20px;
+  font-size: .88rem;
+  color: var(--white-dim);
+}
+
+
+/* ---- Social icons ---- */
+
+.social-row {
+  display: flex;
+  gap: 12px;
+}
+
+.social-row a {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, .2);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: .25s;
+}
+
+.social-row a:hover {
+  background: var(--grad-gold);
+  color: var(--black);
+  border-color: transparent;
+}
+
+
+
+
+/* ==========================================================================
+   15. TAG PILLS
+   ========================================================================== */
+
+.tag-pill {
+  padding: 6px 16px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: .85rem;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.tag-pill:hover,
+.tag-pill.active {
+  background: var(--black);
+  color: #fff;
+  border-color: var(--black);
+}
+
+[data-theme="dark"] .tag-pill:hover,
+[data-theme="dark"] .tag-pill.active {
+  background: var(--grad-gold);
+  color: var(--black);
+}
+
+
+/* ==========================================================================
+   16. HOMEPAGE — HERO
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--black);
+}
+
+/* Three soft colour blobs that drift slowly behind the hero content */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  opacity: .9;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(76, 111, 255, .35), transparent 45%),
+    radial-gradient(circle at 85% 15%, rgba(123, 79, 224, .35), transparent 45%),
+    radial-gradient(circle at 50% 90%, rgba(212, 175, 106, .25), transparent 50%);
+  animation: heroDrift 5s ease-in-out infinite alternate;
+}
+
+@keyframes heroDrift {
+  from { transform: scale(1) translate(0, 0); }
+  to   { transform: scale(1.08) translate(-2%, 2%); }
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 40px;
+  align-items: center;
+}
+
+
+/* ---- Hero text ---- */
+
+.hero-eyebrow {
+  color: var(--gold-bright);
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  line-height: 1.08;
+  margin: 16px 0 20px;
+}
+
+.hero h1 .type-cursor {
+  border-right: 3px solid var(--gold-bright);
+  animation: blink 1.5s  infinite;
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+.hero p {
+  max-width: 460px;
+  margin-bottom: 32px;
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, .75);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+
+/* ---- Hero stats ---- */
+
+.hero-stats {
+  display: flex;
+  gap: 36px;
+  margin-top: 48px;
+}
+
+.hero-stats div span {
+  display: block;
+}
+
+.hero-stats .num {
+  font-family: var(--font-display);
+  font-size: 50px;
+  font-weight: 700;
+  color: var(--gold-bright);
+}
+
+.hero-stats .label {
+  font-size: .78rem;
+  color: rgba(255, 255, 255, .6);
+}
+
+
+/* ---- Hero slider ---- */
+
+.hero-visual {
+  position: relative;
+  height: 460px;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-l);
+  overflow: hidden;
+
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 0.5s ease, transform 1.2s ease;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, .5);
+}
+
+.hero-slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hero-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Caption bar across the bottom of each slide */
+.hero-slide .cap {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 22px;
+  background: linear-gradient(to top, rgba(0, 0, 0, .75), transparent);
+  color: #fff;
+  font-weight: 600;
+}
+
+.hero-dots {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+
+  display: flex;
+  gap: 8px;
+}
+
+.hero-dots button {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .35);
+  transition: .3s;
+}
+
+/* The active dot stretches into a small gold bar */
+.hero-dots button.active {
+  background: var(--gold-bright);
+  width: 22px;
+  border-radius: 6px;
+}
+
+
+/* ==========================================================================
+   17. HOMEPAGE — MARQUEE / BRAND STRIP
+   ========================================================================== */
+
+.marquee-wrap {
+  overflow: hidden;
+  padding: 22px 0;
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  width: max-content;
+  animation: scrollright 10s linear infinite;
+}
+
+.marquee-track span {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  opacity: .55;
+  white-space: nowrap;
+}
+
+/* Moves half the track's width — the content is duplicated so it loops seamlessly */
+@keyframes scrollright {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+
+/* ==========================================================================
+   18. HOMEPAGE — CATEGORIES
+   ========================================================================== */
+
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+}
+
+.cat-card {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-m);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  transition: transform .35s ease;
+}
+
+.cat-card:hover {
+  transform: translateY(-6px);
+}
+
+.cat-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s;
+}
+
+.cat-card:hover img {
+  transform: scale(1.1);
+}
+
+/* Dark gradient at the bottom so the label stays readable */
+.cat-card .overlay {
+  position: absolute;
+  inset: 0;
+  padding: 16px;
+  background: linear-gradient(to top, rgba(0, 0, 0, .75), transparent 55%);
+
+  display: flex;
+  align-items: flex-end;
+
+  color: #fff;
+  font-weight: 600;
+  font-size: .92rem;
+}
+
+
+/* ==========================================================================
+   19. HOMEPAGE — NEWSLETTER BLOCK
+   ========================================================================== */
+
+.newsletter-block {
+  position: relative;
+  overflow: hidden;
+  padding: 60px;
+  border-radius: var(--radius-l);
+  background: var(--grad-signature);
+  color: #fff;
+  text-align: center;
+}
+
+.newsletter-block h2 {
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  margin-bottom: 10px;
+}
+
+.newsletter-block form {
+  display: flex;
+  max-width: 460px;
+  margin: 26px auto 0;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, .15);
+}
+
+.newsletter-block input {
+  flex: 1;
+  padding: 14px 20px;
+  border: none;
+  background: transparent;
+  color: #fff;
+}
+
+.newsletter-block input::placeholder {
+  color: rgba(255, 255, 255, .7);
+}
+
+.newsletter-block input:focus {
+  outline: none;
+}
+
+.newsletter-block button {
+  padding: 14px 26px;
+  background: #fff;
+  color: var(--black);
+  font-weight: 700;
+}
+
+
+/* ==========================================================================
+   20. RESPONSIVE BREAKPOINTS
+   Laptop -> tablet -> mobile -> small phone
+   ========================================================================== */
+
+/* ---- Laptop ---- */
+@media (max-width: 1200px) {
+
+  .cat-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: 1.4fr 1fr 1fr;
+  }
+}
+
+
+/* ---- Tablet ---- */
+@media (max-width: 1024px) {
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-stats {
+    justify-content: center;
+  }
+
+  .hero-visual {
+    height: 340px;
+    margin-top: 20px;
+  }
+}
+
+
+/* ---- Mobile / small tablet ---- */
+@media (max-width: 820px) {
+
+  /* Swap the inline nav for the hamburger + drawer */
+  .nav-links {
+    display: none;
+  }
+
+  .nav-search {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .cat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .section {
+    padding: 70px 0;
+  }
+}
+
+
+/* ---- Small phones ---- */
+@media (max-width: 480px) {
+
+  .cat-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero h1 {
+    font-size: 2.1rem;
+  }
+
+  .container {
+    padding: 0 18px;
+  }
+}
+
+
+/* ==========================================================================
+   21. MOBILE NAV DRAWER
+   Slides in from the right; the overlay dims the page behind it.
+   ========================================================================== */
+
+.nav-drawer {
+  position: fixed;
+  top: 0;
+  right: -300px;          /* parked off-screen until opened */
+  z-index: 2000;
+
+  width: 280px;
+  height: 100vh;
+  padding: 30px 24px;
+  overflow-y: auto;
+
+  background: var(--surface);
+  box-shadow: var(--shadow-hard);
+  transition: right .35s ease;
+}
+
+.nav-drawer.open {
+  right: 0;
+}
+
+.nav-drawer a {
+  display: block;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  font-weight: 500;
+}
+
+.nav-drawer-close {
+  display: block;
+  margin-bottom: 20px;
+  font-size: 1.6rem;
+}
+
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1999;
+  background: rgba(0, 0, 0, .4);
+
+  opacity: 0;
+  visibility: hidden;
+  transition: .3s;
+}
+
+
+/* ==========================================================================
+   22. DARK MODE — CHECKBOX VERSION
+   Same values as the [data-theme="dark"] block above, but driven by the
+   hidden #themeSwitch checkbox instead of a JavaScript attribute.
+   ========================================================================== */
+
+html:has(#themeSwitch:checked) {
+  --bg:            var(--black);
+  --bg-alt:        var(--black-soft);
+  --surface:       #17171b;
+  --surface-glass: rgba(255, 255, 255, 0.06);
+  --text:          var(--white);
+  --text-dim:      #a9a6a0;
+  --border:        rgba(255, 255, 255, 0.12);
+
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.4);
+  --shadow-hard: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+html:has(#themeSwitch:checked) .theme-toggle .knob {
+  transform: translateX(28px);
+}
+
+html:has(#themeSwitch:checked) .theme-toggle .sun {
+  opacity: .35;
+}
+
+html:has(#themeSwitch:checked) .theme-toggle .moon {
+  opacity: 1;
+}
+
+html:has(#themeSwitch:checked) .eyebrow {
+  color: var(--gold-bright);
+}
+
+html:has(#themeSwitch:checked) .ribbon-divider::after {
+  color: var(--white);
+}
+
+html:has(#themeSwitch:checked) .tag-pill:hover,
+html:has(#themeSwitch:checked) .tag-pill.active {
+  background: var(--grad-gold);
+  color: var(--black);
+}
+
+.state-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+
+#preloader {
+  animation: none;
+}
+
+/* Kept so the loader can still be dismissed in place if a page ever needs
+   to hide it without navigating away. */
+@keyframes preloaderOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+/* Escape hatch: if the meta refresh is ever blocked, this link fades in so
+   the visitor is not stranded on the loading screen forever. */
+.pre-fallback {
+  margin-top: 10px;
+  color: var(--white-dim);
+  font-size: .78rem;
+  letter-spacing: 2px;
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 3px;
+  opacity: 0;
+  animation: fallbackIn .4s ease 4s forwards;
+}
+
+@keyframes fallbackIn {
+  to { opacity: 1; }
+}
+
+
+
+.page-enter::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--black);
+  pointer-events: none;
+  animation: veilOut .6s ease forwards;
+}
+
+@keyframes veilOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.navbar,
+.announce-bar,
+.hero,
+.marquee-wrap,
+.section,
+footer {
+  animation: pageIn .6s ease both;
+}
+
+@keyframes pageIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.hamburger,
+.nav-drawer-close,
+.drawer-overlay {
+  cursor: pointer;
+}
+
+
+/* ---- Mobile menu ----
+   Checking the box slides the drawer in and fades the overlay up. The overlay
+   is a label for the same box, so tapping outside closes it. */
+
+#drawerToggle:checked ~ .nav-drawer {
+  right: 0;
+}
+
+#drawerToggle:checked ~ .drawer-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 
+/* ---- Hero slider ----
+   Three slides share one 15s loop; each is visible for 5s and staggered by
+   its animation-delay. The dots run on the same clock. */
+
+.hero-slide {
+  animation: heroFade 15s ease-in-out infinite;
+}
+
+.hero-slide:nth-child(2) { animation-delay: 5s; }
+.hero-slide:nth-child(3) { animation-delay: 10s; }
+
+@keyframes heroFade {
+  0%        { opacity: 0; transform: scale(1.05); }
+  4%, 30%   { opacity: 1; transform: scale(1);    }
+  36%, 100% { opacity: 0; transform: scale(1.05); }
+}
+
+.hero-dots button {
+  animation: dotActive 15s infinite;
+}
+
+.hero-dots button:nth-child(2) { animation-delay: 5s; }
+.hero-dots button:nth-child(3) { animation-delay: 10s; }
+
+@keyframes dotActive {
+  0%, 32% {
+    background: var(--gold-bright);
+    width: 22px;
+    border-radius: 6px;
+  }
+  34%, 100% {
+    background: rgba(255, 255, 255, .35);
+    width: 9px;
+    border-radius: 50%;
+  }
+}
+
+
+.type-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.type-sizer {
+  visibility: hidden;
+}
+
+.type-word {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  opacity: 0;
+  animation: wordCycle 9s ease-in-out infinite;
+}
+
+.type-wrap .type-word:nth-child(3) { animation-delay: 3s; }
+.type-wrap .type-word:nth-child(4) { animation-delay: 6s; }
+
+@keyframes wordCycle {
+  0%        { opacity: 0; transform: translateY(8px);  }
+  5%, 30%   { opacity: 1; transform: translateY(0);    }
+  35%, 100% { opacity: 0; transform: translateY(-8px); }
+}
+
+
+/* ---- Scroll reveals ----
+   The old code used an IntersectionObserver. The default here is simply
+   "visible", so nothing is ever stuck invisible; browsers that support
+   scroll-driven animations get the original fade-up as you scroll. */
+
+.reveal,
+.reveal-zoom {
+  opacity: 1;
+  transform: none;
+}
+
+@supports (animation-timeline: view()) {
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: revealIn linear both;
+    animation-timeline: view();
+    animation-range: entry 15% cover 35%;
+  }
+
+  .reveal-zoom {
+    opacity: 0;
+    transform: scale(.9);
+    animation: revealZoomIn linear both;
+    animation-timeline: view();
+    animation-range: entry 15% cover 35%;
+  }
+}
+
+@keyframes revealIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes revealZoomIn {
+  to { opacity: 1; transform: scale(1); }
+}
+
+
+/* ---- Scroll progress bar ----
+   Grows across the top as you scroll, where scroll-timeline is supported;
+   elsewhere it stays scaled to zero and is simply invisible. */
+
+#scrollProgress {
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+}
+
+@supports (animation-timeline: scroll()) {
+
+  #scrollProgress {
+    animation: progressGrow linear;
+    animation-timeline: scroll(root block);
+  }
+}
+
+@keyframes progressGrow {
+  to { transform: scaleX(1); }
+}
+
+
+/* ---- Back to top ----
+   A plain <a href="#top">, so it works with no script. It used to appear only
+   after scrolling; now it is always there. */
+
+#scrollTop {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  text-decoration: none;
+}
+
+
+/* ==========================================================================
+   24. SMALL LAYOUT FIXES
+   The original page set these with inline style="" attributes; keeping them
+   here means the HTML stays clean.
+   ========================================================================== */
+
+.cat-grid {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 26px;
+}
+
+.hero .btn-outline {
+  border-color: rgba(255, 255, 255, .5);
+  color: #fff;
+}
+
+.newsletter-block p {
+  color: rgba(255, 255, 255, .85);
+}
+
+footer .logo {
+  color: #fff;
+}
+
+.footer-note {
+  margin-bottom: 10px;
+  font-size: .85rem;
+  color: var(--white-dim);
+}
+
+.nav-search {
+  position: relative;
+}
+
+
+/* ==========================================================================
+   25. REDUCED MOTION
+   If the visitor has asked their system for less animation, everything above
+   settles instantly instead of looping. The loading screen still disappears,
+   just without the fade.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    /* Delays have to be zeroed too. Shortening the duration alone still left
+       `backwards`/`both` animations holding their opacity:0 first frame for
+       the whole delay, i.e. a blank page for anyone on reduced motion. */
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Same reason as above: the loader waits for the redirect rather than
+     fading out early onto an empty white page. */
+  #preloader {
+    animation: none !important;
+  }
+
+  /* Turn the looping pieces off and show their first frame instead */
+  .hero-slide,
+  .type-word,
+  .hero-dots button,
+  .marquee-track {
+    animation: none;
+  }
+
+  .hero-slide:nth-child(1) {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero-dots button:nth-child(1) {
+    background: var(--gold-bright);
+    width: 22px;
+    border-radius: 6px;
+  }
+
+  .type-wrap .type-word:nth-child(2) {
+    opacity: 1;
+    transform: none;
+  }
+} 
